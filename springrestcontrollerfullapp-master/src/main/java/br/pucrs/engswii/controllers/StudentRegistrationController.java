@@ -22,12 +22,11 @@ public class StudentRegistrationController {
 	public StudentRegistrationReply registerStudent(@RequestBody Student student) {
 		System.out.println("In registerStudent");
 		StudentRegistrationReply stdregreply = new StudentRegistrationReply();           
-		StudentRegistration.getInstance().add(student);
-		//We are setting the below value just to reply a message back to the caller
+		String statusReply = StudentRegistration.getInstance().add(student);
 		stdregreply.setName(student.getName());
 		stdregreply.setAge(student.getAge());
 		stdregreply.setRegistrationNumber(student.getRegistrationNumber());
-		stdregreply.setRegistrationStatus("Successful");
+		stdregreply.setRegistrationStatus(statusReply);
 
 		return stdregreply;
 	}

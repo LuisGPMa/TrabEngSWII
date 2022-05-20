@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.pucrs.engswii.beans.Student;
 import br.pucrs.engswii.beans.StudentRegistration;
@@ -23,4 +24,13 @@ public class StudentRetrieveController {
 		return StudentRegistration.getInstance().getStudentRecords();
 	}
 
+	@GetMapping("/student/studentbynameseg")
+	public List<Student> getStudentByNameSegment(@RequestParam(value = "nameSeg") String nameSeg) {
+		return StudentRegistration.getInstance().getStudentByNameSegment(nameSeg);
+	}
+
+	@GetMapping("/student/studentbyregnumber")
+	public Student getStudentByRegNumber(@RequestParam(value = "registrationNumber") String registrationNumber) {
+		return StudentRegistration.getInstance().getStudentByRegNumber(registrationNumber);
+	}
 }

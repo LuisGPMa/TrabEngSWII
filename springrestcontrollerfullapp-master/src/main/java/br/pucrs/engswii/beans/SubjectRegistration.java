@@ -56,6 +56,17 @@ public class SubjectRegistration {
 		return "Delete un-successful";
 	}
 
+	public Subject getSubject(String code, String schedule){
+		Subject rply = null;
+		for(Subject sbj: subjectRecords){
+			if(sbj.getCode().equals(code) && sbj.getSchedule().equals(schedule)){
+				rply = sbj;
+				break;
+			}
+		}
+		return rply;
+	}
+
 	public List<Subject> getSubjectRecords() {
 		return subjectRecords;
 	}

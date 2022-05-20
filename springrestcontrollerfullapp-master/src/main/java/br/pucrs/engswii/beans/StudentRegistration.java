@@ -24,8 +24,39 @@ public class StudentRegistration {
 		}
 	}
 
-	public void add(Student std) {
-		studentRecords.add(std);
+	public String add(Student newStd) {
+		String newStdRegNumber = newStd.getRegistrationNumber();
+		for(int i=0; i<studentRecords.size(); i++)
+		{
+			Student std = studentRecords.get(i);
+			if(std.getRegistrationNumber().equals(newStdRegNumber)) {
+				return "Error - Registration Number already exists";
+			}
+		}
+
+		studentRecords.add(newStd);
+		return "New Student successfully added";
+	}
+
+	public List<Student> getStudentByNameSegment(String nameSeg){
+		List<Student> rply = new ArrayList<Student>();
+		for(Student s: studentRecords){
+			if(s.getName().contains(nameSeg)){
+				rply.add(s);
+			}
+		}
+		return rply;
+	}
+
+	public Student getStudentByRegNumber(String regNumber){
+		Student rply = null;
+		for(Student s: studentRecords){
+			if(s.getRegistrationNumber().equals(regNumber)){
+				rply = s;
+				break;
+			}
+		}
+		return rply;
 	}
 
 	public String upDateStudent(Student std) {

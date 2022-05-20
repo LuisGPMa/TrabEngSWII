@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import br.pucrs.engswii.beans.*;
 
 @RestController
-public class UserRegistrationController {
+public class SubjectRegistrationController {
 
-	//  @RequestMapping(method = RequestMethod.POST, value="/register/user")
+	//  @RequestMapping(method = RequestMethod.POST, value="/register/student")
 	//
 	//  @ResponseBody
-	@PostMapping("/register/user")
-	public UserRegistrationReply registerUser(@RequestBody User user) {
-		System.out.println("In registerUser");
-		UserRegistrationReply usrregreply = new UserRegistrationReply();           
-		String statusReply = UserRegistration.getInstance().add(user);
-		System.out.println(statusReply);
+	@PostMapping("/register/subject")
+	public SubjectRegistrationReply registerSubject(@RequestBody Subject subject) {
+		System.out.println("In registerSubject");
+		SubjectRegistrationReply sbjregreply = new SubjectRegistrationReply();           
+		SubjectRegistration.getInstance().add(subject);
 		//We are setting the below value just to reply a message back to the caller
-		usrregreply.setUserID(user.getUserID());;
-		usrregreply.setPassword(user.getPassword());
-		usrregreply.setRegistrationStatus(statusReply);
+		sbjregreply.setName(subject.getName());
+		sbjregreply.setCode(subject.getCode());
+		sbjregreply.setSchedule(subject.getSchedule());
+		sbjregreply.setRegistrationStatus("Successful");
 
-		return usrregreply;
+		return sbjregreply;
 	}
 
 }
