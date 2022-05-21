@@ -22,12 +22,12 @@ public class SubjectRegistrationController {
 	public SubjectRegistrationReply registerSubject(@RequestBody Subject subject) {
 		System.out.println("In registerSubject");
 		SubjectRegistrationReply sbjregreply = new SubjectRegistrationReply();           
-		SubjectRegistration.getInstance().add(subject);
+		String statusRply = SubjectRegistration.getInstance().add(subject);
 		//We are setting the below value just to reply a message back to the caller
 		sbjregreply.setName(subject.getName());
 		sbjregreply.setCode(subject.getCode());
 		sbjregreply.setSchedule(subject.getSchedule());
-		sbjregreply.setRegistrationStatus("Successful");
+		sbjregreply.setRegistrationStatus(statusRply);
 
 		return sbjregreply;
 	}
