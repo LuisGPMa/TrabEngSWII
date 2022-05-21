@@ -24,8 +24,19 @@ public class SubjectRegistration {
 		}
 	}
 
-    public void add(Subject sbj) {
-		subjectRecords.add(sbj);
+    public String add(Subject newSbj) {
+		String newSbjCode = newSbj.getCode();
+		String newSbjSched = newSbj.getSchedule();
+		for(int i=0; i<subjectRecords.size(); i++)
+		{
+			Subject sbj = subjectRecords.get(i);
+			if(sbj.getCode().equals(newSbjCode) && sbj.getSchedule().equals(newSbjSched)) {
+				return "Error - Subject already exists";
+			}
+		}
+
+		subjectRecords.add(newSbj);
+		return "New Subject successfully created";
 	}
 
     public String upDateSubject(Subject sbj) {
