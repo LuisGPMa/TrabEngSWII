@@ -19,7 +19,7 @@ public class StudentEnrollmentRegistrationController {
 	//  @RequestMapping(method = RequestMethod.POST, value="/register/student")
 	//
 	//  @ResponseBody
-	@PostMapping("/register/studentenroll")
+	@PostMapping("/register/studentenroll-duplicate")
 	public StudentRegistrationReply enrollStudent(
     @RequestParam(value = "subjectCode") String subjectCode, 
     @RequestParam(value = "subjectSchedule") String subjectSchedule,

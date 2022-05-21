@@ -2,6 +2,8 @@ package br.pucrs.engswii.controllers;
 
 import java.util.List;
 
+import javax.annotation.Generated;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.stereotype.Controller;
@@ -26,8 +28,9 @@ public class StudentRetrieveController {
 	//	@ResponseBody
 	@GetMapping("/student/allstudent")
 	public List<Student> getAllStudents() {
+
 		if(loginSystem.getUserLogged()==null){
-			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Cause description here");
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
 		}
 
 		return StudentRegistration.getInstance().getStudentRecords();
@@ -35,11 +38,20 @@ public class StudentRetrieveController {
 
 	@GetMapping("/student/studentbynameseg")
 	public List<Student> getStudentByNameSegment(@RequestParam(value = "nameSeg") String nameSeg) {
+
+		if(loginSystem.getUserLogged()==null){
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
+		}
+
 		return StudentRegistration.getInstance().getStudentByNameSegment(nameSeg);
 	}
 
 	@GetMapping("/student/studentbyregnumber")
 	public Student getStudentByRegNumber(@RequestParam(value = "registrationNumber") String registrationNumber) {
+		if(loginSystem.getUserLogged()==null){
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
+		}
+		
 		return StudentRegistration.getInstance().getStudentByRegNumber(registrationNumber);
 	}
 }
