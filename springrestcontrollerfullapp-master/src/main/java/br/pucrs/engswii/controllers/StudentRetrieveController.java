@@ -28,7 +28,6 @@ public class StudentRetrieveController {
 	//	@ResponseBody
 	@GetMapping("/student/allstudent")
 	public List<Student> getAllStudents() {
-
 		if(loginSystem.getUserLogged()==null){
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
 		}
@@ -38,7 +37,6 @@ public class StudentRetrieveController {
 
 	@GetMapping("/student/studentbynameseg")
 	public List<Student> getStudentByNameSegment(@RequestParam(value = "nameSeg") String nameSeg) {
-
 		if(loginSystem.getUserLogged()==null){
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
 		}
