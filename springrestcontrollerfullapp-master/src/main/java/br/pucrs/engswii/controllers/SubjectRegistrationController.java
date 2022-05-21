@@ -21,7 +21,7 @@ public class SubjectRegistrationController {
 	//  @RequestMapping(method = RequestMethod.POST, value="/register/student")
 	//
 	//  @ResponseBody
-	@PostMapping("/register/subject")
+	@PostMapping("/subject/register")
 	public SubjectRegistrationReply registerSubject(@RequestBody Subject subject) {
 		if(loginSystem.getUserLogged()==null){
 			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Nao encontrado login");
