@@ -22,7 +22,7 @@ public class LoginSystemRegistration {
 	}
 	public boolean processLogins(User userLogin){	
 		LoginSystem loginSystem = LoginSystem.getInstance();
-
+		
 		for (User userInList : UserRegistration.getInstance().getUserRecords()) {
 			if (userInList.getUserID().equals(userLogin.getUserID())){
 				if (userInList.getPassword().equals(userLogin.getPassword())){
